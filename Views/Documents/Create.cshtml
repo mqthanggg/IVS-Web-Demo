@@ -1,0 +1,41 @@
+﻿@model WebApplication1.Models.Document
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create a new document</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DocSubject" class="control-label"></label>
+                <input asp-for="DocSubject" class="form-control" value="Product documentation"/>
+                <span asp-validation-for="DocSubject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocTitle" class="control-label"></label>
+                <input asp-for="DocTitle" class="form-control" />
+                <span asp-validation-for="DocTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="EmployeeName" class="control-label"></label>
+                <input asp-for="EmployeeName" class="form-control" placeholder="(Will be removed, only for demonstration purpose)" />
+                <span asp-validation-for="EmployeeName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication1.Models.Document>
+
+@{
+}
+
+<h1>Documents</h1>
+
+<header class="d-inline-flex flex-row my-3">
+    <a asp-action="Create" class="nav-link text-white btn btn-success mx-1">Add</a>
+    @* <a asp-action="Delete" class="nav-link text-white btn btn-danger mx-1">Delete</a> *@
+</header>
+
+<div class="p-3">
+    @if (Model.Count() == 0){
+        <h3>There is no document right now, maybe add a new document?</h3>
+    }
+    @foreach (var item in Model)
+    {
+        <div class="border-bottom mb-3 pb-3">
+            <span class="fw-bold">@item.DocSubject</span><br>
+            <a class="h3" asp-controller="DocumentFiles" asp-action="Index" asp-route-id="@item.Id">@item.DocTitle</a>
+            <br>
+            Added by
+            <a href="">@item.EmployeeName</a>
+            -&nbsp;@item.DocTime.ToString("dd/MM/yyyy") &nbsp;
+            <span class="text-decoration-underline">@item.DocTime.ToString("hh:mm")</span>
+            &nbsp;@item.DocTime.ToString("tt")
+            <a asp-action="Delete" asp-route-id="@item.Id" class="text-decoration-none">
+                <svg class="img-fluid" style="width: 16px; height: 17px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M135.2 17.7L128 32 32 32C14.3 32 0 46.3 0 64S14.3 96 32 96l384 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 0-7.2-14.3C307.4 6.8 296.3 0 284.2 0L163.8 0c-12.1 0-23.2 6.8-28.6 17.7zM416 128L32 128 53.2 467c1.6 25.3 22.6 45 47.9 45l245.8 0c25.3 0 46.3-19.7 47.9-45L416 128z" /></svg>
+            </a>
+        </div>
+    }
+</div>
